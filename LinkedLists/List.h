@@ -105,28 +105,30 @@ bool List<TIPONODO>::deleteFromInit( TIPONODO &valor ) {
 
 template <typename TIPONODO>
 bool List< typename TIPONODO>::deleteFromFinal( TIPONODO &valor ) {
-    if ( isEmpty() ) {
+    if ( isEmpty() ) 
+    {
         return false;
     }
-    else
+    else 
     {
-        Nodo<TIPONODO> *temp = last;
-        if ( first == last ){
+        Nodo< TIPONODO > *temp = last; 
+        if ( first == last ) 
+        {
             first = last = NULL;
         }
         else 
         {
-            Nodo< TIPONODO > *actual = first;
-            while ( actual->siguiente != last) {
+            Nodo < TIPONODO > *actual = first;
+            while (actual->siguiente != last ) {
                 actual = actual->siguiente;
             }
-
-            last = actual;
+           
             actual->siguiente = NULL;
+            last = actual;
         }
-        valor = temp->dato;
-        delete temp;
-        return true;   
+         valor = temp->dato;
+         delete temp;
     }
+
 }
 #endif
