@@ -79,4 +79,54 @@ void List<TIPONODO>::preppend( const TIPONODO & value ) {
         first = nuevoNodo;
     }
 }
+
+
+template <typename TIPONODO> 
+bool List<TIPONODO>::deleteFromInit( TIPONODO &valor ) {
+    if ( isEmpty() ) { return false; }
+    else 
+    {
+        NodoLista<TIPONODO> *temporalNodo = first;
+
+        if ( first == last ){
+            first = NULL;
+            last = NULL; 
+        } 
+        else 
+        {
+            first = first->_siguiente;
+        }
+
+        valor = temporalNodo->dato;
+        delete temporalNodo;
+        return true;
+    }
+}
+
+template <typename TIPONODO>
+bool List< typename TIPONODO>::deleteFromFinal( TIPONODO &valor ) {
+    if ( isEmpty() ) {
+        return false;
+    }
+    else
+    {
+        Nodo<TIPONODO> *temp = last;
+        if ( first == last ){
+            first = last = NULL;
+        }
+        else 
+        {
+            Nodo< TIPONODO > *actual = first;
+            while ( actual->siguiente != last) {
+                actual = actual->siguiente;
+            }
+
+            last = actual;
+            actual->siguiente = NULL;
+        }
+        valor = temp->dato;
+        delete temp;
+        return true;   
+    }
+}
 #endif
